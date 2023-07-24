@@ -41,6 +41,12 @@ if [ -z "$YAY" ]; then
     exit 
 fi
 
+# Set XDG_RUNTIME_DIR if not already set
+if [ -z "$XDG_RUNTIME_DIR" ]; then
+    XDG_RUNTIME_DIR="/tmp/runtime-${USER}"
+    export XDG_RUNTIME_DIR
+fi
+
 ### Disable Wi-Fi powersave mode ###
 read -n1 -rep 'Would you like to disable Wi-Fi powersave? (y,n)' WIFI
 if [[ $WIFI == "Y" || $WIFI == "y" ]]; then
